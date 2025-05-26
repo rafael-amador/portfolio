@@ -1,0 +1,284 @@
+/* App.css */
+:root {
+  --bg: #fefaf6;
+  --text: #111;
+  --card: #fff;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+[data-theme='dark'] {
+  --bg: #1f1f1f;
+  --text: #f0f0f0;
+  --card: #2c2c2c;
+  --shadow: rgba(255,255,255,0.05);
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+  transition: background 0.3s, color 0.3s;
+}
+
+.App {
+  overflow-x: hidden;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  background-color: var(--card);
+  box-shadow: 0 2px 6px var(--shadow);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  transition: top 0.4s ease;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.social-links a {
+  margin-left: 1rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.social-links {
+  padding-right: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.github { background-color: #333; color: #fff; }
+.linkedin { background-color: #0077b5; color: #fff; }
+.instagram { background-color: #e1306c; color: #fff; }
+
+.social-links a:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* Toggle Slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  margin-left: 1rem;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #525457;
+}
+
+input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, var(--bg), #f9ede5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 6rem;
+}
+
+[data-theme='dark'] .hero {
+  background: linear-gradient(to bottom, var(--bg), #1a1a1a);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 0.3rem;
+}
+
+.section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.project-grid {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px var(--shadow);
+  width: 250px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.badge {
+  display: inline-block;
+  background-color: #ddd;
+  color: #333;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  margin-right: 0.3rem;
+}
+
+[data-theme='dark'] .badge {
+  background-color: #444;
+  color: #eee;
+}
+
+.contact p {
+  font-size: 1.1rem;
+}
+
+.loader-screen {
+  background-color: var(--bg);
+  color: var(--text);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: fadeOut 1s ease 1s forwards;
+}
+
+.loader-logo {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: riseIn 1s ease forwards 0.2s;
+}
+
+.loader-ring {
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  border-top: 6px solid var(--text);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes riseIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.intro-bars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 998;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  pointer-events: none;
+  background-color: transparent;
+}
+
+.bar {
+  flex: 1;
+  height: 100%;
+  background-color: var(--card);
+  animation: barReveal 1.2s ease forwards;
+  transform-origin: top;
+}
+
+@keyframes barReveal {
+  to {
+    height: 0%;
+  }
+}
+
+.intro-animate .intro-bars {
+  animation: fadeBars 0.5s ease 1.5s forwards;
+}
+
+@keyframes fadeBars {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
